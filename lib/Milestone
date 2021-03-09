@@ -1,0 +1,9 @@
+Step 1 – Create Login Sign Up - 9 March
+1.	Saurabh - Create Authentication using Google and General (No UI) and Backend function for push data to firebase.
+2.	Ritwik – Create Form for User Profile. The form will be of two Category Non-Farmer and Farmer which have their attribute respective to there data model.
+Step 2 – Create Data Model, Backend CRUD Functionality 10 March.
+Step 3 – Create Provider class for each Data Model and Declaration of Route For each Page 10 March.
+Step 4 – Create Home Page and Create Categories page 11 March.
+Step 5 – Algorithm of assigning Worker as per requirement 11 March.
+Step 6 - Adding Payment API
+Step 7 – Tracking Page.
