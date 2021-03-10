@@ -1,11 +1,18 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:freelancekisan_user/Screen/ProfileScreen.dart';
 import 'package:splashscreen/splashscreen.dart';
-
+import 'Screen/HomeScreen.dart';
 import 'Screen/LoginSignUp.dart';
+import 'Service/AuthService.dart';
 
 void main() {
   runApp(new MaterialApp(
+    routes: {
+      '/HomeScreen': (context) => HomeScreen(),
+      '/LoginSignUp': (context) => LoginSignUp(),
+      '/ProfileScreen': (context) => ProfileScreen(),
+    },
     debugShowCheckedModeBanner: false,home:
   MyApp()));
 }
@@ -28,7 +35,7 @@ class _MyAppState extends State<MyApp> {
             }
           if(snapshot.connectionState==ConnectionState.done)
             {
-              return LoginSignUp();
+              return AuthService().handleAuth();
             }
           return Container();
         }
