@@ -25,10 +25,7 @@ class UserService{
        }
    }
    Future<bool> checkProfile(String userId)async{
-     print('Hello There');
      var snapshot = await _db.collection('Users').doc(userId).collection('Details').doc(userId).get();
-     print(snapshot.data()['farmType']);
-     print('Data is '+snapshot.data()['profileCompleted'].toString());
      if(snapshot.data()['profileCompleted']==true)
      {
        return true;
