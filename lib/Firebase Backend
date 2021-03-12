@@ -1,0 +1,51 @@
+Hello Ritwik!
+
+Here I will tell you what i have done to implement data sending and retrieving function.
+
+Step 1 : Just Import all the dependencies.
+         Dependency 1: Firebase_core - For Initializing app with firebase i.e to connect our app with firebase.
+         Dependency 2: cloud_FireStore - For Operating CRUD operations for FireStore database.
+
+Step 2 : Now data stored in Json format so we first need to convert our data into this format before sending it to the firebase.
+         Process 1 : Look in class FarmerProfile there you will see toMap function that will assign "key" : "value", You can give name to your key as per your choice but need to remember it.
+                     This is because when you retrieve data from FireStore it will return the data in JSON in format "key" : "value" and we need to know key to have access to it.
+
+Step 3 : Write function for sending Data.
+         Goto class UserService here i have created a database instance _db. _db will have key to your database and will allow CRUD operation.
+         CRUD.
+         1. Create - For create we use set() function. This set function only accept value in JSON format. So you can see in function saveFarmerDetails()
+                     i have used toMap function inside set function to send convert data into JSON Format.
+                     await _db.collection('Users').doc(profile.userId).collection('Details').doc(profile.userId).set(profile.toMap(profile));
+                     You Can Create Collection and doc and  give it a name as above.
+                     This above Function will send Data to your Backend and store it at the given path you have Mention.
+          2. Retrieve - For retrieve we use get() function. This get function only return value in JSON format. So we need to convert this JSON format into our desired
+                        object and for this i have written fromFireStore() function in every Class. This take JSON format as input and convert it into an object of your class based on key.
+
+Send Data to FireStore.
+//Create Auth instance for userId and email.
+FirebaseAuth auth = FirebaseAuth.instance;
+          //Create Object of UserService.
+          UserService user=UserService();
+          //Make Object and store value in it be sure to not leave any value null.
+
+          List<Crop> list=[Crop(cropName: 'abc'),Crop(cropName: 'abc')];
+
+          Address address=Address(houseNo: 'abc',flatNo: 'abc',area: 'abc',road: 'abc',pinCode: 'abc',city: 'abc');
+
+          FarmerProfile f = new FarmerProfile(farmType: 'abc',crops: list,cultivatedLand: 'abc',address: address);
+
+          UserDetails u= new UserDetails(firstName: "hjhj",lastName: "5555",userEmail: "555",userId: "212",dob: "12121",profession: "farmer",contactNumber: "465656");
+
+          f.farmType="Ritwik";
+          f.lastName="Mehta";
+          f.userEmail=auth.currentUser.email;
+          f.userId=auth.currentUser.uid;
+          f.dob="28/10/1999";
+          f.profession="Farmer";
+          f.contactNumber="9147854125";
+
+          // Call function and pass f as an argument.
+
+          user.saveFarmerDetails(f);
+
+          //Hurray Data is in the Database.
