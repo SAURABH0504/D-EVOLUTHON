@@ -1,4 +1,4 @@
-import 'file:///D:/Flutter%20Project/freelancekisan_user/lib/Model/Profile/UserDetails.dart';
+import 'UserDetails.dart';
 import 'package:freelancekisan_user/DataModel/Address.dart';
 
 class FarmerProfile extends UserDetails{
@@ -8,4 +8,6 @@ class FarmerProfile extends UserDetails{
      List<String> crops;
 
      FarmerProfile({this.address, this.farmType, this.cultivatedLand, this.crops});
+
+
 }

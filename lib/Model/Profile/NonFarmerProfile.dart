@@ -1,5 +1,7 @@
-import 'file:///D:/Flutter%20Project/freelancekisan_user/lib/Model/Profile/UserDetails.dart';
+
 import 'package:freelancekisan_user/DataModel/Address.dart';
+
+import 'UserDetails.dart';
 
 class NonFarmerProfile extends UserDetails{
      Address address;
