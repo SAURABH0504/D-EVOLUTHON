@@ -1,31 +1,32 @@
-class Address{
+class UserAddress{
   String houseNo;
-  String flatNo;
   String area;
-  String road;
+  String complete;
   String city;
   String pinCode;
-
-  Address({this.houseNo, this.flatNo, this.area, this.road, this.city,
-      this.pinCode});
+  String latitude;
+  String longitude;
+  UserAddress({this.houseNo,this.area, this.complete, this.city,
+      this.pinCode,this.latitude,this.longitude});
 
   Map<String,dynamic> toMap(){
     return {
       'houseNo' :houseNo,
-      'flatNo' : flatNo,
       'area' : area,
-      'road':road,
+      'complete':complete,
       'city':city,
-      'pinCode':pinCode
+      'pinCode':pinCode,
+      'latitude' : latitude,
+      'longitude' : longitude
     };
   }
 
-  Address.fromFirestore(Map<String,dynamic> fireStore):
+  UserAddress.fromFirestore(Map<String,dynamic> fireStore):
       houseNo=fireStore['houseNo'],
-      flatNo=fireStore['flatNo'],
       area=fireStore['area'],
-      road=fireStore['road'],
+      complete=fireStore['complete'],
       city=fireStore['city'],
-      pinCode=fireStore['pinCode'];
-
+      pinCode=fireStore['pinCode'],
+      latitude=fireStore['latitude'],
+      longitude=fireStore['longitude'];
 }

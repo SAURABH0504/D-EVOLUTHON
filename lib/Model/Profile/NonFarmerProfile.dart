@@ -2,7 +2,7 @@ import 'file:///D:/Flutter%20Project/freelancekisan_user/lib/Model/Profile/UserD
 import 'package:freelancekisan_user/DataModel/Address.dart';
 
 class NonFarmerProfile extends UserDetails {
-     Address address;
+     UserAddress address;
      String occupation;
 
      NonFarmerProfile({this.address, this.occupation});
@@ -32,7 +32,7 @@ class NonFarmerProfile extends UserDetails {
           profile.profession=fireStore['profession'];
           profile.contactNumber=fireStore['contactNumber'];
           profile.profileCompleted=fireStore['profileCompleted'];
-          profile.address=Address.fromFirestore(fireStore['address']);
+          profile.address=UserAddress.fromFirestore(fireStore['address']);
           profile.occupation=fireStore['occupation'];
           return profile;
      }

@@ -3,7 +3,7 @@ import 'package:freelancekisan_user/Model/Profile/UserDetails.dart';
 
 class FarmerProfile extends UserDetails {
 
-     Address address;
+     UserAddress address;
      String farmType;
      String cultivatedLand;
      List<Crop> crops;
@@ -34,7 +34,7 @@ class FarmerProfile extends UserDetails {
           profile.dob=fireStore['dob'];
           profile.profession=fireStore['profession'];
           profile.contactNumber=fireStore['contactNumber'];
-          profile.address=Address.fromFirestore(fireStore['address']);
+          profile.address=UserAddress.fromFirestore(fireStore['address']);
           profile.farmType=fireStore['farmType'];
           profile.cultivatedLand=fireStore['cultivatedLand'];
           profile.profileCompleted=fireStore['profileCompleted'];
