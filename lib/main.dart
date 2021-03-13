@@ -5,6 +5,7 @@ import 'package:splashscreen/splashscreen.dart';
 import 'Screen/HomeScreen.dart';
 import 'Screen/LoginSignUp.dart';
 import 'Service/AuthService.dart';
+import 'Screen/workerCategory.dart';
 
 void main() {
   runApp(new MaterialApp(
@@ -12,6 +13,7 @@ void main() {
       '/HomeScreen': (context) => HomeScreen(),
       '/LoginSignUp': (context) => LoginSignUp(),
       '/ProfileScreen': (context) => ProfileScreen(),
+      '/WorkerCatScreen':(context)=> WorkerCategory(),
     },
     debugShowCheckedModeBanner: false,home:
   MyApp()));
@@ -25,7 +27,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return new SplashScreen(
-      seconds: 5,
+      seconds: 3,
       navigateAfterSeconds: FutureBuilder(
         future: Firebase.initializeApp(),
         builder: (context,snapshot){

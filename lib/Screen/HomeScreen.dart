@@ -143,8 +143,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                  houseNo: flatNohouseNo,
                                  area: area,
                                  latitude: position.latitude.toString(),
-                                 longitude: position.longitude.toString()
+                                 longitude: position.longitude.toString(),
+
                              );
+                             Navigator.pushNamed(context, '/WorkerCatScreen');
                            }
                          },
                     ),
