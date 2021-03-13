@@ -91,10 +91,9 @@ class _HomeScreenState extends State<HomeScreen> {
   }
   @override
   Widget build(BuildContext context){
-    return Provider(
+    return FutureProvider(
       create: (context)=>geoService.getInitialLocation(),
-      child: MaterialApp(
-        home: Scaffold(
+      child: Scaffold(
           body: Stack(
             children: [
               Consumer<Position>(
@@ -187,7 +186,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
         ),
-      ),
-    );
+      );
   }
 }
