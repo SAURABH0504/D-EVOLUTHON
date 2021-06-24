@@ -24,41 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
   }
-  Widget _gethouseNoFlatNo(){
-    return Padding(
-      padding: const EdgeInsets.all(2.0),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(4.0),
-          child: TextFormField(
-            onChanged: (value){
-              flatNohouseNo=value;
-            },
-            validator: (String value) {
-              if (value.isEmpty) {
-                return 'Required';
-              }
-              return null;
-            },
-            decoration: InputDecoration(
-              hintText: 'Flat/House',
-              focusedBorder: InputBorder.none,
-              errorBorder: InputBorder.none,
-              focusColor: Colors.white,
-              disabledBorder: InputBorder.none,
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-  Widget _getArea(){
+  Widget _getAddress(){
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -66,25 +32,30 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: TextFormField(
-          onChanged: (value){
-            area=value;
-          },
-          validator: (String value) {
-            if (value.isEmpty) {
-              return 'Required';
-            }
-            return null;
-            },
-            decoration: InputDecoration(
-            hintText: 'Area/Locality',
-            focusedBorder: InputBorder.none,
-            errorBorder: InputBorder.none,
-            focusColor: Colors.white,
-            disabledBorder: InputBorder.none,
-            border: InputBorder.none,
-            contentPadding: EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
-          ),
+        child: Row(
+          children: [
+            TextFormField(
+              onChanged: (value){
+                area=value;
+              },
+              validator: (String value) {
+                if (value.isEmpty) {
+                  return 'Required';
+                }
+                return null;
+                },
+                decoration: InputDecoration(
+                hintText: 'Your Address',
+                focusedBorder: InputBorder.none,
+                errorBorder: InputBorder.none,
+                focusColor: Colors.white,
+                disabledBorder: InputBorder.none,
+                border: InputBorder.none,
+                contentPadding: EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
+              ),
+            ),
+
+          ],
         ),
       ),
     );
@@ -107,15 +78,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ):Center(child: CircularProgressIndicator(),);
                 },
               ),
-              Align(
-                alignment: Alignment.topCenter,
-                child: Form(key: _formKey2,child: Row(
-                  children: [
-                    Expanded(flex: 1,child: _gethouseNoFlatNo()),
-                    Expanded(flex: 2,child: _getArea()),
-                  ],
-                ),),
-              ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Align(
@@ -128,11 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     width: 300,
                     child: TextButton(
                       child: Text('Select Category',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),onPressed: ()async{
-                         if(!_formKey2.currentState.validate()){
-                           return ;
-                         }
-                         else
-                           {
+
                              position=  await geoService.getInitialLocation();
                              var coordinates = Coordinates(position.latitude, position.longitude);
                              var addresses = await Geocoder.local.findAddressesFromCoordinates(coordinates);
@@ -144,15 +102,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                  area: area,
                                  latitude: position.latitude.toString(),
                                  longitude: position.longitude.toString(),
-
                              );
                              Navigator.pushNamed(context, '/WorkerCatScreen');
                            }
-                         },
                     ),
                   ),
                 ),
-              )
+              ),
+              Align(alignment: FractionalOffset.topCenter,child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: _getAddress(),
+              ))
             ],
           ),
           appBar: AppBar(title: Text('Search'),backgroundColor: Colors.green,),

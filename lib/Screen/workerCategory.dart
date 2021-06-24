@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:freelancekisan_user/main.dart';
 
 // ignore: camel_case_types
 class WorkerCategory extends StatelessWidget {
@@ -7,17 +6,21 @@ class WorkerCategory extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.green,
         title: Text('Select worker Category'),
       ),
-      body: GridView.count(
-        crossAxisCount: 2,
-        children: [
-          Card_widget(textName: 'Electrician'),
-          Card_widget(textName: 'Raj Mistry'),
-          Card_widget(textName: 'Plumber'),
-          Card_widget(textName: 'Farm Worker'),
-
-        ],
+      body: Container(
+        child: GridView.count(
+          mainAxisSpacing: 3,
+          crossAxisSpacing: 1,
+          crossAxisCount: 2,
+          children: [
+            Card_widget(textName: 'Electrician'),
+            Card_widget(textName: 'Raj Mistry',),
+            Card_widget(textName: 'Plumber'),
+            Card_widget(textName: 'Farm Worker'),
+          ],
+        ),
       ),
     );
   }
@@ -34,6 +37,7 @@ class Card_widget extends StatelessWidget {
     return Expanded(
       child: Center(
         child: Card(
+          color: Colors.green.shade400,
         child: InkWell(
 
         splashColor: Colors.greenAccent.withAlpha(80),
@@ -44,7 +48,7 @@ class Card_widget extends StatelessWidget {
           width: 300,
           height: 100,
           child: Center(child: Text(
-            '$textName'
+            '$textName',style: TextStyle(fontSize: 20,color: Colors.white,fontWeight: FontWeight.bold),
           )),
         ),
         ),
